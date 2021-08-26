@@ -1,0 +1,29 @@
+$redisConnectionString = "redis://clientid:BP0wt910AbgcI5+jr7F9iO78VadmehuF9rSGHeNW5hY=@sitecorerc-ase-app-stage-rg-redis.redis.cache.windows.net:6380?ssl=true&db=10&ConnectTimeout=3000";
+
+Write-Host "Flushing cache on host Started " $redisConnectionString -ForegroundColor Yellow
+
+Add-Type -path "D:\\RoyalCanin_WorkingFolder\\Websites.RoyalCaninGit\\docker\\deploy\\cm\\bin\\ServiceStack.Redis.dll"
+Add-Type -path "D:\\RoyalCanin_WorkingFolder\\Websites.RoyalCaninGit\\docker\\deploy\\cm\\bin\\ServiceStack.Text.dll"
+Add-Type -path "D:\\RoyalCanin_WorkingFolder\\Websites.RoyalCaninGit\\docker\\deploy\\cm\\bin\\ServiceStack.Common.dll"
+Add-Type -path "D:\\RoyalCanin_WorkingFolder\\Websites.RoyalCaninGit\\docker\\deploy\\cm\\bin\\ServiceStack.Interfaces.dll"
+
+#Connect to Redis Server
+$redismanager = [ServiceStack.Redis.RedisManagerPool]::New($redisConnectionString)
+
+#Get the Client
+$redisClient = $redismanager.GetClient()
+
+#All keys
+$allKeys = $redisClient.GetAllKeys()
+
+foreach ($key in $allKeys) {
+    if( $key -like '*master' -or $key -like '*web')
+    {
+        #$redisClient.Remove(sitemapKey);
+        Write-Host "Removing the keys " $key -ForegroundColor Yellow
+    }
+}
+
+Write-Host "Flushing cache on host Ended" -ForegroundColor Yellow
+
+
