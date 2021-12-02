@@ -8,7 +8,7 @@ function HasMoreVersions {
 $customList = New-Object System.Collections.Generic.List[PSObject]
 function Get-ItemVersionReport {
     $maxVerion = Read-Host "Enter the MAX Version.";
-    $items = Get-ChildItem -Path "master:/sitecore/content/Royal Canin/Germany" -Language * -Recurse
+    $items = Get-ChildItem -Path "master:<path>" -Language * -Recurse
     $items | ForEach-Object {
 	    if ([int]$_.Versions.Count -gt $maxVerion)
 		{
