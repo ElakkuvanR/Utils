@@ -1,4 +1,4 @@
-$redisConnectionString = "redis://clientid:BP0wt910AbgcI5+jr7F9iO78VadmehuF9rSGHeNW5hY=@sitecorerc-ase-app-stage-rg-redis.redis.cache.windows.net:6380?ssl=true&db=10&ConnectTimeout=3000";
+$redisConnectionString = "redis://clientid:<connectionstring>:6380?ssl=true&db=10&ConnectTimeout=3000";
 
 Write-Host "Flushing cache on host Started " $redisConnectionString -ForegroundColor Yellow
 
