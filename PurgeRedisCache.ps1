@@ -2,10 +2,10 @@ $redisConnectionString = "redis://clientid:<connectionstring>:6380?ssl=true&db=1
 
 Write-Host "Flushing cache on host Started " $redisConnectionString -ForegroundColor Yellow
 
-Add-Type -path "D:\\RoyalCanin_WorkingFolder\\Websites.RoyalCaninGit\\docker\\deploy\\cm\\bin\\ServiceStack.Redis.dll"
-Add-Type -path "D:\\RoyalCanin_WorkingFolder\\Websites.RoyalCaninGit\\docker\\deploy\\cm\\bin\\ServiceStack.Text.dll"
-Add-Type -path "D:\\RoyalCanin_WorkingFolder\\Websites.RoyalCaninGit\\docker\\deploy\\cm\\bin\\ServiceStack.Common.dll"
-Add-Type -path "D:\\RoyalCanin_WorkingFolder\\Websites.RoyalCaninGit\\docker\\deploy\\cm\\bin\\ServiceStack.Interfaces.dll"
+Add-Type -path "\\docker\\deploy\\cm\\bin\\ServiceStack.Redis.dll"
+Add-Type -path "\\docker\\deploy\\cm\\bin\\ServiceStack.Text.dll"
+Add-Type -path "\\docker\\deploy\\cm\\bin\\ServiceStack.Common.dll"
+Add-Type -path "\\docker\\deploy\\cm\\bin\\ServiceStack.Interfaces.dll"
 
 #Connect to Redis Server
 $redismanager = [ServiceStack.Redis.RedisManagerPool]::New($redisConnectionString)
